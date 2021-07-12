@@ -103,7 +103,7 @@ public class AddressBook
 	{
 		boolean options = true;
 		while (options) {
-			System.out.println("Enter \n 1)To Add contacts \n 2)To Exit");
+			System.out.println("Enter \n 1)To Add contacts \n 2) To edit contacts\n 3) To Exit");
 			System.out.println("Enter the option : ");
 			int option = sc.nextInt();
 			switch (option) {
@@ -111,13 +111,17 @@ public class AddressBook
 				AddressBook.addContacts();
 				break;
 			case 2:
+				AddressBook.editContacts();
 				break;
+
 			default:
 				System.out.println("Invalid Option");
 			}
 
 		}
 	}
+
+
 	static void addContacts()
 	{
 		int choice=0;
@@ -130,34 +134,67 @@ public class AddressBook
 			System.out.println("Enter the lastName");
 			person.setLastName(sc.next());
 			System.out.println("Enter the address");
-			person.setAdress(sc.next());
+			person.setAddress(sc.next());
 			System.out.println("Enter the city");
 			person.setCity(sc.next());
 			System.out.println("Enter the state");
 			person.setState(sc.next());
 			System.out.println("Enter the EmailId");
-			person.setEmail(sc.next());
+			person.setEmailId(sc.next());
 			System.out.println("Enter the zip");
 			person.setZip(sc.nextInt());
 			System.out.println("Enter the phoneNumber");
-			person.setPhoneNo(sc.nextLong());
+			person.setPhoneNumber(sc.nextLong());
 
 			System.out.println(person.toString());
 			contacts.add(person);
-            //adding mutiple contacts
-			System.out.println("Do you want to add extra contacts..? 1.)yes  /n  2.)No");
-			int extra=sc.nextInt();
-			if(extra == 1)
-			{
-				choice=0;
-			}
-			else
-			{
-				choice=1;
-				System.out.println(contacts);
 
+			
+
+		}
+	}
+
+	static void editContacts() 
+	{
+
+		System.out.println("Enter firstname of the user you want to the edit:");
+		String firstName = sc.next();
+		for (Contacts c : contacts) {
+			if (c.getFirstName().equals(firstName)) {
+
+				System.out.println("c");
+				System.out.println("Enter the  field which u want to edit:");
+
+				System.out.println(" Address");
+				System.out.println(" City ");
+				System.out.println(" State");
+				System.out.println(" Email");
+				System.out.println(" PhoneNumber");
+				System.out.println(" ZipCode");
+				System.out.println("Exit");
+				String field = sc.next();
+
+				if (field.equals("firstName")) {
+					c.setFirstName(sc.next());
+				} else if (field.equals("lastName")) {
+					c.setLastName(sc.next());
+				} else if (field.equals("Address")) {
+					c.setAddress(sc.next());
+				} else if (field.equals("City")) {
+					c.setCity(sc.next());
+				} else if (field.equals("State")) {
+					c.setState(sc.next());
+				} else if (field.equals("Email")) {
+					c.setEmailId(sc.next());
+				} else if (field.equals("Zip")) {
+					c.setZip(sc.nextInt());
+				} else if (field.equals("phoneNumber")) {
+					c.setPhoneNumber(sc.nextLong());
+				}
 			}
 
 		}
+		System.out.println(contacts.toString());
+
 	}
 }
