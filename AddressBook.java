@@ -93,58 +93,12 @@ public class Contacts {
 
 package com.adressbook;
 import java.util.*;
-import java.util.Scanner;
 
 public class AddressBook
 {
 	public static ArrayList<Contacts> contacts=new ArrayList<>();
-	static Scanner sc=new Scanner(System.in);
+	
 	public static void main(String args[])
 	{
-		boolean options = true;
-		while (options) {
-			System.out.println("Enter \n 1)To Add contacts \n 2)To Exit");
-			System.out.println("Enter the option : ");
-			int option = sc.nextInt();
-			switch (option) {
-			case 1:
-				AddressBook.addContacts();
-				break;
-			case 2:
-                                break;
-			default:
-				System.out.println("Invalid Option");
-			}
-
-		}
-	}
-
-
-	static void addContacts()
-	{
-		int choice=0;
-		while(choice ==0)
-		{
-			Contacts person=new Contacts();
-
-			System.out.println("Enter the firstName");
-			person.setFirstName(sc.next());
-			System.out.println("Enter the lastName");
-			person.setLastName(sc.next());
-			System.out.println("Enter the address");
-			person.setAdress(sc.next());
-			System.out.println("Enter the city");
-			person.setCity(sc.next());
-			System.out.println("Enter the state");
-			person.setState(sc.next());
-			System.out.println("Enter the EmailId");
-			person.setEmail(sc.next());
-			System.out.println("Enter the zip");
-			person.setZip(sc.nextInt());
-			System.out.println("Enter the phoneNumber");
-			person.setPhoneNo(sc.nextLong());
-
-			System.out.println(person.toString());
-			contacts.add(person);
-		}
-	}
+           System.out.println("welcome to adress book");
+        }
