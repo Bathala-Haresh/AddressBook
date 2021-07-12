@@ -103,7 +103,7 @@ public class AddressBook
 	{
 		boolean options = true;
 		while (options) {
-			System.out.println("Enter \n 1)To Add contacts \n 2) To edit contacts\n 3) To Exit");
+			System.out.println("Enter \n 1)To Add contacts \n 2) To edit contacts\n 3)To Delete Contacts\n 4)To Exit");
 			System.out.println("Enter the option : ");
 			int option = sc.nextInt();
 			switch (option) {
@@ -113,7 +113,9 @@ public class AddressBook
 			case 2:
 				AddressBook.editContacts();
 				break;
-
+			case 3:
+				AddressBook.deleteContacts();
+				break;
 			default:
 				System.out.println("Invalid Option");
 			}
@@ -134,29 +136,39 @@ public class AddressBook
 			System.out.println("Enter the lastName");
 			person.setLastName(sc.next());
 			System.out.println("Enter the address");
-			person.setAddress(sc.next());
+			person.setAdress(sc.next());
 			System.out.println("Enter the city");
 			person.setCity(sc.next());
 			System.out.println("Enter the state");
 			person.setState(sc.next());
 			System.out.println("Enter the EmailId");
-			person.setEmailId(sc.next());
+			person.setEmail(sc.next());
 			System.out.println("Enter the zip");
 			person.setZip(sc.nextInt());
 			System.out.println("Enter the phoneNumber");
-			person.setPhoneNumber(sc.nextLong());
+			person.setPhoneNo(sc.nextLong());
 
 			System.out.println(person.toString());
 			contacts.add(person);
 
-			
+			System.out.println("Do you want to add extra contacts..? 1.)yes  /n  2.)No");
+			int extra=sc.nextInt();
+			if(extra == 1)
+			{
+				choice=0;
+			}
+			else
+			{
+				choice=1;
+				System.out.println(contacts);
+
+			}
 
 		}
 	}
 
 	static void editContacts() 
 	{
-
 		System.out.println("Enter firstname of the user you want to the edit:");
 		String firstName = sc.next();
 		for (Contacts c : contacts) {
@@ -179,22 +191,37 @@ public class AddressBook
 				} else if (field.equals("lastName")) {
 					c.setLastName(sc.next());
 				} else if (field.equals("Address")) {
-					c.setAddress(sc.next());
+					c.setAdress(sc.next());
 				} else if (field.equals("City")) {
 					c.setCity(sc.next());
 				} else if (field.equals("State")) {
 					c.setState(sc.next());
 				} else if (field.equals("Email")) {
-					c.setEmailId(sc.next());
+					c.setEmail(sc.next());
 				} else if (field.equals("Zip")) {
 					c.setZip(sc.nextInt());
 				} else if (field.equals("phoneNumber")) {
-					c.setPhoneNumber(sc.nextLong());
+					c.setPhoneNo(sc.nextLong());
 				}
 			}
 
 		}
 		System.out.println(contacts.toString());
 
+	}
+
+	static void deleteContacts()
+	{
+		System.out.println("Enter firstname of the user you want to delete:");
+		String firstName = sc.next();
+
+		for (int i = 0; i < contacts.size(); i++) {
+			Contacts c = contacts.get(i);
+			if (c.getFirstName().equals(firstName)) {
+
+				contacts.remove(c);
+			}
+			System.out.println(contacts);
+		}
 	}
 }
